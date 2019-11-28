@@ -2,25 +2,45 @@
   <div class="">
     <span>Energy List</span>
 
-    <ul>
-      <list-component v-for="(fuel, index) in data" :fuel= "fuel" :key="index"></list-component>
-    </ul>
+    <GChart type="PieChart" :data="chartData" :options="chartOptions">
+
+      <!-- <ul v-for="(fuel, index) in energy" :fuel= "fuel" :key="index">
+        <li>[{{fuel.fuel}},{{fuel.perc}}]</li>
+
+      </ul> -->
+
+    </GChart>
+
+
   </div>
 </template>
 
 <script>
-
-import ListComponent from './ListComponent.vue'
-
+import { GChart } from "vue-google-charts";
 export default {
   name: 'energy-list',
-  props:['data'],
+
+  props:['formattedEnergy'],
 
   components: {
-    "list-component": ListComponent
-  }
+    GChart
+  },
 
+
+  data () {
+    return {
+      // Array will be automatically processed with visualization.arrayToDataTable function
+      chartData: this.formattedEnergy,
+      chartOptions: {
+        chart: {
+          title: 'Company Performance',
+          subtitle: 'Sales, Expenses, and Profit: 2014-2017',
+        }
+      }
+    }
+  }
 }
+
 
 </script>
 

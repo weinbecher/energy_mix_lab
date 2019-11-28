@@ -1,6 +1,9 @@
 <template lang="html">
-<div class="">
-<li>{{fuel}}</li>
+<div>
+
+<li>[{{fuel.fuel}},{{fuel.perc}}]</li>
+
+
 </div>
 </template>
 
@@ -9,6 +12,8 @@ export default {
   name: 'list-component',
   props:['fuel']
 }
+
+
 </script>
 
 <style lang="css" scoped>
